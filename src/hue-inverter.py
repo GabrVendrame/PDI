@@ -8,6 +8,7 @@ def plot_image(image):
     cv2.resizeWindow('Imagem Alterada', width, height)
     cv2.imshow('Imagem Alterada', image)
     cv2.waitKey(0)
+    cv2.imwrite('./images/new_image.png', image)
 
 def invert_hue(image, m, x):
     hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -37,7 +38,7 @@ def invert_hue(image, m, x):
     return changed_image
 
 def main():
-    image = cv2.imread('matiz.png')
+    image = cv2.imread('./images/mengao.png')
     m = int(input('Valor da matiz: '))
     x = int(input('X: '))
 
