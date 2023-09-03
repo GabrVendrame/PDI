@@ -35,7 +35,7 @@ ax.set_yticks([])
 ax.invert_xaxis()
 
 # Salva a imagem em um arquivo .png
-plt.savefig('circulo_matiz_espelhado_horizontal.png', dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('matiz_hsv.png', dpi=300, bbox_inches='tight', pad_inches=0)
 
 # Fecha a figura
 plt.close()
