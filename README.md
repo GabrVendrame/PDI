@@ -38,6 +38,7 @@ In this section, you will find detailed information about each assignment or pro
 
    ```bash
    git clone https://github.com/GabrVendrame/PDI.git
+   ```
 
 ## License
 
