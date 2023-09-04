@@ -1,6 +1,5 @@
 import sys
 import cv2
-import numpy as np
 from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QFrame, QPushButton, QLabel, QSlider, QLineEdit, QFileDialog, QApplication
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap
@@ -98,6 +97,9 @@ class ImageProcessorApp(QMainWindow):
         self.hue_slider.valueChanged.connect(self.update_hue_entry)
         self.x_slider.valueChanged.connect(self.update_x_entry)
 
+        self.hue_entry.textChanged.connect(self.update_hue_slider)
+        self.x_entry.textChanged.connect(self.update_x_slider)
+
     def open_image(self):
         file_dialog = QFileDialog(self)
         file_path, _ = file_dialog.getOpenFileName(self,
@@ -147,6 +149,16 @@ class ImageProcessorApp(QMainWindow):
 
     def update_x_entry(self, value):
         self.x_entry.setText(str(value))
+        self.update_image()
+
+    def update_hue_slider(self, value):
+        value = int(value) % 360
+        self.hue_slider.setValue(value)
+        self.update_image()
+    
+    def update_x_slider(self, value):
+        value = int(value) % 360
+        self.x_slider.setValue(value)
         self.update_image()
 
     def display_image(self, image):
