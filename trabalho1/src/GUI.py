@@ -1,5 +1,8 @@
 import sys
-import cv2
+import numpy as np
+from skimage import io
+from skimage.transform import resize
+from skimage.color import rgba2rgb
 from PyQt5.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QFrame, QPushButton, QLabel, QSlider, QLineEdit, QFileDialog, QApplication
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QImage, QPixmap
@@ -68,7 +71,7 @@ class ImageProcessorApp(QMainWindow):
         self.x_slider = QSlider(Qt.Horizontal)
         self.x_entry = QLineEdit()
         self.x_slider.setMinimum(0)
-        self.x_slider.setMaximum(180)
+        self.x_slider.setMaximum(360)
         self.x_entry.setFixedWidth(35)
         self.x_slider.setFixedWidth(120)
         self.x_slider.setFixedHeight(35)
@@ -108,8 +111,13 @@ class ImageProcessorApp(QMainWindow):
                                 "Image files (*.jpg *.jpeg *.png *.tif *.tiff *.heif *.heic)")
 
         if file_path:
-            self.image = cv2.imread(file_path)
-            self.image = cv2.resize(self.image, (450, 450))
+            self.image = io.imread(file_path)
+            
+            # Check if the image is RGBA and convert it to RGB
+            if self.image.shape[-1] == 4:
+                self.image = rgba2rgb(self.image)
+            
+            self.image = resize(self.image, (450, 450))
             self.display_image(self.image) 
 
             # Enable sliders if the image is loaded
@@ -131,7 +139,7 @@ class ImageProcessorApp(QMainWindow):
                                     "Image files (*.jpg *.jpeg *.png *.tif *.tiff *.heif *.heic)")
 
             if file_path:
-                cv2.imwrite(file_path, self.changed_image)
+                io.imsave(file_path, self.changed_image)
 
     def update_image(self):
         if self.image is not None:
@@ -140,7 +148,10 @@ class ImageProcessorApp(QMainWindow):
             self.hue_entry.setText(str(m))
             self.x_entry.setText(str(x))
 
-            self.changed_image = invert_hue(self.image.copy(), m, x)
+            if x == 0:
+                self.changed_image = self.image.copy()
+            else:
+                self.changed_image = invert_hue(self.image.copy(), m, x)
             self.display_image(self.changed_image)
 
     def update_hue_entry(self, value):
@@ -163,9 +174,10 @@ class ImageProcessorApp(QMainWindow):
 
     def display_image(self, image):
         if image is not None:
+            image = (image*255).astype(np.uint8)
             height, width, channel = image.shape
             bytes_per_line = 3 * width
-            q_image = QImage(image.data, width, height, bytes_per_line, QImage.Format_RGB888).rgbSwapped()
+            q_image = QImage(image.data, width, height, bytes_per_line, QImage.Format_RGB888)
             pixmap = QPixmap.fromImage(q_image)
             self.result_label.setPixmap(pixmap)
 
