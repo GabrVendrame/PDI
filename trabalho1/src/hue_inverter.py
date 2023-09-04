@@ -1,17 +1,11 @@
-import cv2
+import cv2 as cv
 import numpy as np
 
-def plot_image(image):
-    width = 600
-    height = 600
-    cv2.namedWindow('Imagem Alterada', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('Imagem Alterada', width, height)
-    cv2.imshow('Imagem Alterada', image)
-    cv2.waitKey(0)
-    cv2.imwrite('./images/new_image.png', image)
+def plot_image(image, name):
+    cv.imwrite('trabalho1/images/color_inverted_' + name, image)
 
 def invert_hue(image, m, x):
-    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    hsv_image = cv.cvtColor(image, cv.COLOR_BGR2HSV)
 
     lower_interval = np.mod((m - x) / 2, 180)
     upper_interval = np.mod((m + x) / 2, 180)
@@ -33,18 +27,19 @@ def invert_hue(image, m, x):
 
     hsv_image[:, :, 0] = image_hue
 
-    changed_image = cv2.cvtColor(hsv_image, cv2.COLOR_HSV2BGR)
+    changed_image = cv.cvtColor(hsv_image, cv.COLOR_HSV2BGR)
 
     return changed_image
 
 def main():
-    image = cv2.imread('./images/mengao.png')
-    m = int(input('Valor da matiz: '))
+    image_name = input('Image name: ')
+    image = cv.imread('trabalho1/images/' + image_name)
+    m = int(input('Hue: '))
     x = int(input('X: '))
 
     changed_image = invert_hue(image, m, x)
 
-    plot_image(changed_image)
+    plot_image(changed_image, image_name)
 
 if __name__ == '__main__':
     main()
