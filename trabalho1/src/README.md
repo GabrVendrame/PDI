@@ -20,10 +20,10 @@ You can install the required dependencies using pip:
 ## Usage
 
 1. Clone the repository to your local machine:
-  
-  ```bash
-  git clone https://github.com/GabrVendrame/PDI.git
-  ```
+
+   ```bash
+   git clone https://github.com/GabrVendrame/PDI.git
+   ```
 
 2. Run the script `GUI.py` using the following command, to use the aplication with GUI:
 
