@@ -1,6 +1,6 @@
 # Hue Inverter Image
 
-The "Hue Inverter Image" is a Python application built using PyQt5, scikit-image, and NumPy. This application allows you to open, manipulate, and save images with a focus on changing the hue of an image.
+The "Hue Inverter Image" is a Python application built using PyQt5, OpenCV (cv2), and NumPy. This application allows you to open, manipulate, and save images with a focus on changing the hue of an image.
 
 ## Prerequisites
 
@@ -8,13 +8,13 @@ Before using this application, ensure that you have the following dependencies i
 
 - Python 3.x
 - PyQt5
-- scikit-image
+- OpenCV (cv2)
 - NumPy
 
 You can install the required dependencies using pip:
 
   ```bash
-  pip install PyQt5 scikit-image numpy
+  pip install PyQt5 opencv-python-headless numpy
   ```
 
 ## Usage
