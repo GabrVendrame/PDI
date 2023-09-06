@@ -19,6 +19,8 @@ You can install the required dependencies using pip:
 
 ## Usage
 
+### How to use GUI.py and hue_inverter.py
+
 1. Clone the repository to your local machine:
 
   ```bash
@@ -53,6 +55,8 @@ To change the image you want to modify, remove the comment in the line specifyin
   ```
 
 Change (`name_of_image`) for the name of the image you want to use and (`extension`) is the type of image, that must be one of the following types: (`.png, .jpeg, .jpg, .jfif`)
+
+<!-- ### How to use plot_hue.ipynb -->
 
 ## Features
 
