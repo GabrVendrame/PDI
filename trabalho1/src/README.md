@@ -35,11 +35,11 @@ You can install the required dependencies using pip:
 
 The application window will open, and you can use it to perform the following tasks:
 
-- Open Image: Click the "Open Image" button to load an image for processing. You can select image files in various formats (`.png, .jpeg, .jpg, .jfif`) using the file dialog.
+- Open Image: Click the "Open Image" button to load an image for processing. You can select image files in various formats `(.png, .jpeg, .jpg, .jfif)` using the file dialog.
 
 - Adjust Hue and X: You can adjust the "Matiz" (Hue) and "X" sliders to change the hue of the loaded image. The "Matiz" slider controls the primary hue, and the "X" slider controls the range of hues affected by the inversion. You can also manually input values in the corresponding text fields.
 
-- Save Image: After modifying the image, click the "Save Image" button to save the processed image. You can specify the file name, location, and format (`.png, .jpeg, .jpg, .jfif`) using the file dialog.
+- Save Image: After modifying the image, click the "Save Image" button to save the processed image. You can specify the file name, location, and format `(.png, .jpeg, .jpg, .jfif)` using the file dialog.
 
 3. If you don't want to use the application without GUI, you can use the standalone script `hue_inverter.py` for a simplified command-line version of the hue inversion process:
 
@@ -54,7 +54,7 @@ To change the image you want to modify, remove the comment in the line specifyin
   image_path = "trabalho1/images/(name_of_image).(extension)"
   ```
 
-Change (`name_of_image`) for the name of the image you want to use and (`extension`) is the type of image, that must be one of the following types: (`.png, .jpeg, .jpg, .jfif`)
+Change `(name_of_image)` with the name of the image you want to use and `(extension)` is the type of image, that must be one of the following types: `(.png, .jpeg, .jpg, .jfif)`
 
 <!-- ### How to use plot_hue.ipynb -->
 
