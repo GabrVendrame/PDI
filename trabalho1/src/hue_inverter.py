@@ -1,19 +1,24 @@
 import cv2 as cv
 import numpy as np
 
-def plot_images(image, name):
-    global original_image
+def save_image(image_path, changed_image):
+    image_name = image_path.split('/')[-1]
+
+    output_path = f'trabalho1/images/changed_{image_name}'
+
+    cv.imwrite(output_path, changed_image)
+
+def plot_images(original_image, changed_image):
     cv.namedWindow('Original Image', cv.WINDOW_NORMAL)
     cv.resizeWindow('Original Image', 400, 400)
     cv.imshow('Original Image', original_image)
 
     cv.namedWindow('Changed Image', cv.WINDOW_NORMAL)
     cv.resizeWindow('Changed Image', 400, 400)
-    cv.imshow('Changed Image', image)
+    cv.moveWindow('Changed Image', 510, 100)
+    cv.imshow('Changed Image', changed_image)
 
     cv.waitKey(0)
-
-    cv.imwrite('trabalho1/images/color_inverted_' + name, image)
 
 def invert_hue(image, m, x):
     hsv_image = cv.cvtColor(image, cv.COLOR_BGR2HSV)
@@ -42,17 +47,22 @@ def invert_hue(image, m, x):
     return changed_image
 
 def main():
-    global original_image
-    image_name = "trabalho1/images/matiz.png"
-    # image_name = "trabalho1/images/matiz_angulos.png"
-    # image_name = "trabalho1/images/mengao.png"
-    original_image = cv.imread(image_name)
-    m = float(input('Hue: '))
-    x = float(input('X: '))
+    image_path = "trabalho1/images/matiz.png"
+    # image_path = "trabalho1/images/matiz_angulos.png"
+    # image_path = "trabalho1/images/mengao.png"
+    # image_path = "trabalho1/images/anorlondo.png"
+    # image_path = "trabalho1/images/divine-dragon.jpeg"
+    # image_path = "trabalho1/images/erdtre.png"
+    # image_path = "trabalho1/images/majula.png"
+    original_image = cv.imread(image_path)
+    m = int(input('Hue: '))
+    x = int(input('X: '))
 
     changed_image = invert_hue(original_image, m, x)
 
-    plot_images(changed_image, image_name)
+    plot_images(original_image, changed_image)
+
+    save_image(image_path, changed_image)
 
 if __name__ == '__main__':
     main()
