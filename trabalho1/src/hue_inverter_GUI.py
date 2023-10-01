@@ -69,7 +69,7 @@ def save_image():
 root = tk.Tk()
 root.title("Hue Adjustment")
 
-input_image = cv.imread('trabalho1/images/matiz_angulos.png')
+input_image = cv.imread('images/matiz.png')
 input_image = cv.resize(input_image, (450, 500))
 
 hue_label = tk.Label(root, text= f"Hue Value: {0}")
