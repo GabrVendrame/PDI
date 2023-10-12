@@ -20,8 +20,8 @@ In this section, you will find detailed information about each assignment or pro
 - [Assignment 1: Hue Alteration](trabalho1/)
   - Description: Modify the hue of an image using Python and OpenCV.
 
-- [Assignment 2: [Assignment Name]](trabalho2/)
-  - Description: High-boost filtering to increase sharpness in images.
+- [Assignment 2: [High Boost Filter]](trabalho2/)
+  - Description: High boost filtering to increase sharpness in images.
 
 <!-- - [Assignment 3: [Assignment Name]](assignment3/)
   - Description: [Description of Assignment 3]
