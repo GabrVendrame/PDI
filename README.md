@@ -20,11 +20,10 @@ In this section, you will find detailed information about each assignment or pro
 - [Assignment 1: Hue Alteration](trabalho1/)
   - Description: Modify the hue of an image using Python and OpenCV.
 
-<!-- - [Assignment 2: [Assignment Name]](assignment2/)
-  - Description: [Description of Assignment 2]
-  - Due Date: [Specify Due Date]
+- [Assignment 2: [Assignment Name]](trabalho2/)
+  - Description: High-boost filtering to increase sharpness in images.
 
-- [Assignment 3: [Assignment Name]](assignment3/)
+<!-- - [Assignment 3: [Assignment Name]](assignment3/)
   - Description: [Description of Assignment 3]
   - Due Date: [Specify Due Date]
 
