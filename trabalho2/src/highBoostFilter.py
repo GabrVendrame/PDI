@@ -12,47 +12,36 @@ def save_image(image_path, changed_image):
     cv.imwrite(output_path, changed_image)
 
 def plot_images(original_image, changed_image):
-    cv.namedWindow('Original Image', cv.WINDOW_NORMAL)
-    cv.resizeWindow('Original Image', 300, 300)
     cv.imshow('Original Image', original_image)
 
-    cv.namedWindow('Changed Image', cv.WINDOW_NORMAL)
-    cv.resizeWindow('Changed Image', 300, 300)
-    cv.moveWindow('Changed Image', 510, 100)
     cv.imshow('Changed Image', changed_image)
 
-def filter(image, alpha):
-    gray_image = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+def high_boost(image, k):
+    gray_image = image
 
-    # kernel = np.array([[1, 4, 7, 4, 1],
-    #                    [4, 16, 26, 16, 4],
-    #                    [7, 26, 41, 26, 7],
-    #                    [4, 16, 26, 16, 4],
-    #                    [1, 4, 7, 4, 1]]) / 273
-    
-    kernel = np.array([[1, 2, 4, 2, 1], 
-                       [2, 4, 8, 4, 2], 
-                       [4, 8, 16, 8, 4], 
-                       [2, 4, 8, 4, 2], 
-                       [1, 2, 4, 2, 1]]) / 100
-    
-    blur_image = cv.filter2D(gray_image, -1, kernel)
+    # faz convolucao com filtro gaussiano 5x5 e desvio padrao 3
+    low_filter = cv.GaussianBlur(gray_image, (5, 5), 3)
 
-    mask = gray_image - blur_image
+    # low_filter = cv.filter2D(gray_image, -1, np.flip(kernel))
 
-    changed_image = gray_image + alpha * mask
+    sharpness_mask = gray_image - low_filter
+
+    changed_image = gray_image + k * sharpness_mask
 
     changed_image = np.clip(changed_image, 0, 255).astype(np.uint8)
+
+    cv.imshow('b', low_filter)
+    cv.imshow('c', sharpness_mask)
 
     return changed_image
 
 def main():
     image_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../images")
     image_path = f"{image_dir}/Fig0340.tif"
-    original_image = cv.imread(image_path)
-    a = 4.5
+    original_image = cv.imread(image_path, cv.IMREAD_GRAYSCALE)
+    k = 4.5
     
-    changed_image = filter(original_image, a)
+    changed_image = high_boost(original_image, k)
 
     plot_images(original_image, changed_image)
 
