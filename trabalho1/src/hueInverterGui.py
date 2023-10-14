@@ -1,6 +1,6 @@
 import cv2 as cv
 import os
-from hue_inverter import invert_hue
+from trabalho1.src.hueInverter import invert_hue
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog as fd
