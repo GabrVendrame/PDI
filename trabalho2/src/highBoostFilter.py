@@ -30,15 +30,13 @@ def filter(image, alpha):
     #                    [4, 16, 26, 16, 4],
     #                    [1, 4, 7, 4, 1]]) / 273
     
-    kernel = np.array([[1, 2, 3, 2, 1], 
-                       [2, 6, 8, 6, 2], 
-                       [3, 8, 10, 8, 3], 
-                       [2, 6, 8, 6, 2], 
-                       [1, 2, 3, 2, 1]]) / 98
+    kernel = np.array([[1, 2, 4, 2, 1], 
+                       [2, 4, 8, 4, 2], 
+                       [4, 8, 16, 8, 4], 
+                       [2, 4, 8, 4, 2], 
+                       [1, 2, 4, 2, 1]]) / 100
     
     blur_image = cv.filter2D(gray_image, -1, kernel)
-
-    
 
     mask = gray_image - blur_image
 
@@ -52,7 +50,7 @@ def main():
     image_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../images")
     image_path = f"{image_dir}/Fig0340.tif"
     original_image = cv.imread(image_path)
-    a = 3
+    a = 4.5
     
     changed_image = filter(original_image, a)
 
