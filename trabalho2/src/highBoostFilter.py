@@ -17,7 +17,7 @@ def plot_images(original_image, changed_image):
     cv.imshow('Changed Image', changed_image)
 
 def high_boost(image, k):
-    gray_image = image
+    gray_image = image.copy()
 
     # faz convolucao com filtro gaussiano 5x5 e desvio padrao 3
     low_filter = cv.GaussianBlur(gray_image, (5, 5), 3)
@@ -41,7 +41,7 @@ def main():
     original_image = cv.imread(image_path, cv.IMREAD_GRAYSCALE)
     k = 4.5
     
-    changed_image = high_boost(original_image, k)
+    changed_image = high_boost(original_image.copy(), k)
 
     plot_images(original_image, changed_image)
 
