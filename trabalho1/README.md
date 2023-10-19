@@ -33,7 +33,7 @@ You can install the required dependencies using pip:
 
 ## Usage
 
-### How to use GUI.py and hue_inverter.py
+### How to use huiInverterGUI.py and hueInverter.py
 
 1. Clone the repository to your local machine:
 
@@ -41,10 +41,10 @@ You can install the required dependencies using pip:
   git clone https://github.com/GabrVendrame/PDI.git
   ```
 
-2. Run the script `GUI.py` using the following command, to use the aplication with GUI:
+2. Run the script `huiInverterGUI.py` using the following command, to use the aplication with GUI:
 
   ```bash
-  python3 GUI.py
+  python3 huiInverterGUI.py
   ```
 
 The application window will open, and you can use it to perform the following tasks:
@@ -55,24 +55,24 @@ The application window will open, and you can use it to perform the following ta
 
 - Save Image: After modifying the image, click the "Save Image" button to save the processed image. You can specify the file name, location, and format `(.png, .jpeg, .jpg, .jfif)` using the file dialog.
 
-3. If you don't want to use the application without GUI, you can use the standalone script `hue_inverter.py` for a simplified command-line version of the hue inversion process:
+3. If you don't want to use the application without GUI, you can use the standalone script `hueInverter.py` for a simplified command-line version of the hue inversion process:
 
   ```bash
-  python3 hue_inverter.py
+  python3 hueInverter.py
   ```
 
 - This script allows you to input the Hue value you wanted to change, and X value, which specifies the range of colors, and it will create a color-inverted image using the provided parameters. Both images (original and modified) will be displayed after the values are inputed.
 To change the image you want to modify, remove the comment in the line specifying the image you want change, then comment the line of the current image. For new images inserted in the images folder you must add a line in the code, like this:
 
   ```python
-  image_path = "trabalho1/images/(name_of_image).(extension)"
+  image_path = "images/(name_of_image).(extension)"
   ```
 
 Change `(name_of_image)` with the name of the image you want to use and `(extension)` is the type of image, that must be one of the following types: `(.png, .jpeg, .jpg, .jfif)`
 
 ### Generating Hue Circles Images
 
-The `plot_hue.ipynb` is a python notebook file containing two scripts to generate hue circle image.
+The `plotHue.ipynb` is a python notebook file containing two scripts to generate hue circle image.
 
 #### Script 1: Generate Hue Circle
 
