@@ -11,8 +11,10 @@ def save_image(image_path, changed_image):
 
     cv.imwrite(output_path, changed_image)
 
-def plot_images(original_image, changed_image):
+def plot_images(original_image, mask, changed_image):
     cv.imshow('Original Image', original_image)
+
+    cv.imshow('Mask', mask)
 
     cv.imshow('Changed Image', changed_image)
 
@@ -35,10 +37,7 @@ def high_boost(image, k):
     sharpness_mask += 255
     sharpness_mask /= 2
 
-    cv.imshow('Blurred Image', low_filter.astype(np.uint8))
-    cv.imshow('Mask', sharpness_mask.astype(np.uint8))
-
-    return changed_image
+    return changed_image, sharpness_mask.astype(np.uint8)
 
 def main():
     image_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../images")
@@ -46,9 +45,9 @@ def main():
     original_image = cv.imread(image_path)
     k = 4.5
     
-    changed_image = high_boost(original_image, k)
+    changed_image, mask = high_boost(original_image, k)
 
-    plot_images(original_image, changed_image)
+    plot_images(original_image, mask, changed_image)
 
     save_image(image_path, changed_image)
 
