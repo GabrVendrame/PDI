@@ -42,6 +42,8 @@ def high_boost(image, k):
 def main():
     image_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../images")
     image_path = f"{image_dir}/Fig0340.tif"
+    # image_path = f"{image_dir}/Fig0338.tif"
+
     original_image = cv.imread(image_path)
     k = 4.5
     
