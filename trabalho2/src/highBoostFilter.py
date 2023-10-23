@@ -26,14 +26,12 @@ def high_boost(image, k):
 
     sharpness_mask = gray_image - low_filter
 
-    # normalizando valores na mascara
-    sharpness_mask = np.clip(sharpness_mask, 0, 255)
-
     changed_image = image + k * sharpness_mask
 
     changed_image = np.clip(changed_image, 0, 255).astype(np.uint8)
 
-    # ajustando mascara para melhor visualizacao
+    # normalizando a mascara para melhor visualizacao
+    sharpness_mask = np.clip(sharpness_mask, -255, 255)
     sharpness_mask += 255
     sharpness_mask /= 2
 
